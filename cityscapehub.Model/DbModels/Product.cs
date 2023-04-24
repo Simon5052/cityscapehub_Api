@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -19,6 +20,13 @@ namespace cityscapehub.Model.DbModels
         [ForeignKey(nameof(CategoryId))]
         public Category Category { get; set; }
         public int CategoryId { get; set; }
+        [DefaultValue(typeof(DateTime), "")]
+        public DateTime? CreationDate { get; set; } = DateTime.Now;
+        [DefaultValue(true)]
+        public bool Active { get; set; }
+        [DefaultValue(false)]
+        public bool BestSellers { get; set; }
+
     }
 
     public class Category
@@ -37,5 +45,15 @@ namespace cityscapehub.Model.DbModels
         [ForeignKey(nameof(ProductId))]
         public Product Product { get; set; }
         public int ProductId { get; set; }
+    }
+
+    public class User
+    {
+        public int UserId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+
     }
 }
