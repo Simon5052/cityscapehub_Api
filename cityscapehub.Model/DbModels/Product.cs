@@ -15,6 +15,7 @@ namespace cityscapehub.Model.DbModels
         public int ProductId { get; set; }
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
+        public string? Permaiink { get; set; }
         public double Price { get; set; }
         public int Quantity { get; set; }
         [ForeignKey(nameof(CategoryId))]
@@ -36,6 +37,8 @@ namespace cityscapehub.Model.DbModels
         public string CategoryName{ get; set; }
         public string CategoryDescription{ get; set; }
         public string CategoryImage{ get; set; }
+        [DefaultValue(true)]
+        public bool Active{ get; set; }
     }
 
     public class ProductImage
@@ -49,6 +52,7 @@ namespace cityscapehub.Model.DbModels
 
     public class User
     {
+        [Key]
         public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

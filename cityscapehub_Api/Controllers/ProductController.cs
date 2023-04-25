@@ -1,7 +1,9 @@
 ﻿using cityscapehub.Data.DatabaseContext;
 using cityscapehub.Model.DbModels;
 using Microsoft.AspNetCore.Http;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace cityscapehub_Api.Controllers
 {
@@ -15,12 +17,12 @@ namespace cityscapehub_Api.Controllers
             _dbContext = dbContext;
         }
         [HttpPost("[action]")]
-        public async Task<IActionResult> Test([FromBody] Category param)
+        public async Task<object> Test([FromBody] Category param)
         {
             try
             {
-                _dbContext.Category.Add(param);
-                _dbContext.SaveChanges();
+                _dbContext.Categories.Add(param);
+                await _dbContext.SaveChangesAsync();
                 return Ok();
             }
             catch (Exception e)

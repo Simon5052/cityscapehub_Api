@@ -12,8 +12,8 @@ using cityscapehub.Data.DatabaseContext;
 namespace cityscapehub.Data.Migrations
 {
     [DbContext(typeof(CityscapehubDataContext))]
-    [Migration("20230424172835_initial")]
-    partial class initial
+    [Migration("20230424183636_second")]
+    partial class second
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,7 +47,7 @@ namespace cityscapehub.Data.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("cityscapehub.Model.DbModels.Product", b =>
@@ -106,7 +106,7 @@ namespace cityscapehub.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductImage");
+                    b.ToTable("ProductImages");
                 });
 
             modelBuilder.Entity("cityscapehub.Model.DbModels.User", b =>
@@ -135,7 +135,7 @@ namespace cityscapehub.Data.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("cityscapehub.Model.DbModels.Product", b =>
